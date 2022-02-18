@@ -247,7 +247,8 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     // When adding elements to the luckysheet-icon-morebtn-div element of the toolbar, it will affect the height of the entire workbook area, so the height is obtained here
     gridH = $("#" + Store.container).height();
 
-    $("#" + Store.container).find(".luckysheet").height(gridH - 2).width(gridW - 2);
+    // $("#" + Store.container).find(".luckysheet").height(gridH - 2).width(gridW - 2);
+    $("#" + Store.container).find(".luckysheet").height(gridH).width(gridW);
 
     changeSheetContainerSize(gridW, gridH)
 
@@ -275,11 +276,11 @@ export function changeSheetContainerSize(gridW, gridH){
     $("#luckysheet-cell-main").height(Store.cellmainHeight);
     $("#luckysheet-rows-h").height(Store.cellmainHeight - Store.cellMainSrollBarSize);
 
-    $("#luckysheet-scrollbar-y").height(Store.cellmainHeight + Store.columnHeaderHeight - Store.cellMainSrollBarSize - 3);
+    $("#luckysheet-scrollbar-y").height(Store.cellmainHeight + Store.columnHeaderHeight - Store.cellMainSrollBarSize/* - 3*/);
     $("#luckysheet-scrollbar-x").height(Store.cellMainSrollBarSize);
     $("#luckysheet-scrollbar-y").width(Store.cellMainSrollBarSize);
 
-    $("#luckysheet-scrollbar-x").width(Store.cellmainWidth).css("left", Store.rowHeaderWidth - 2);
+    $("#luckysheet-scrollbar-x").width(Store.cellmainWidth).css("left", Store.rowHeaderWidth/* - 2*/);
 
     Store.luckysheetTableContentHW = [
         Store.cellmainWidth + Store.rowHeaderWidth - Store.cellMainSrollBarSize,

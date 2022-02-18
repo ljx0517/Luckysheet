@@ -119,12 +119,14 @@ function showsheetconfigmenu() {
     }
 
     setTimeout(function(){
-        mouseclickposition($("#luckysheet-rightclick-sheet-menu"), luckysheetcurrentSheetitem.offset().left + luckysheetcurrentSheetitem.width(), luckysheetcurrentSheetitem.offset().top - 18, "leftbottom");
+        // mouseclickposition($("#luckysheet-rightclick-sheet-menu"), luckysheetcurrentSheetitem.offset().left + luckysheetcurrentSheetitem.width(), luckysheetcurrentSheetitem.offset().top - 18, "leftbottom");
+        mouseclickposition($("#luckysheet-rightclick-sheet-menu"),
+          luckysheetcurrentSheetitem.offset().left + luckysheetcurrentSheetitem.width(),
+          luckysheetcurrentSheetitem.offset().top + luckysheetcurrentSheetitem.height() / 2,'lefttop');
     },1);
 }
 
 let luckysheetsheetrightclick = function ($t, $cur, e) {
-    debugger
     clearTimeout(jfdbclicklagTimeout);
     if ($cur.hasClass("luckysheet-sheets-item-name") && $cur.attr("contenteditable") == "true") {
         return;
@@ -146,7 +148,7 @@ let luckysheetsheetrightclick = function ($t, $cur, e) {
         $("#luckysheet-input-box").removeAttr("style");
         $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight").remove();
     }
-    debugger
+
     $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
     $t.addClass("luckysheet-sheets-item-active");
     cleargridelement(e);
@@ -187,8 +189,7 @@ export function initialSheetBar(){
         if(JSON.stringify(luckysheetConfigsetting.showsheetbarConfig) !== '{}'){
             Object.assign(config,luckysheetConfigsetting.showsheetbarConfig);
         }
-
-        Store.sheetBarHeight = 31;
+        // Store.sheetBarHeight = config.sheetBarHeight;
         if (luckysheetConfigsetting.useCustomSheetBarContainer) {
             Store.sheetBarHeight = 0;
         }
@@ -221,7 +222,7 @@ export function initialSheetBar(){
                 return;
             }, 0);
         }
-        debugger
+
         if ($item.hasClass("luckysheet-sheets-item-active") && $item.find(".luckysheet-sheets-item-name").attr("contenteditable") == "false") {
             jfdbclicklagTimeout = setTimeout(function () {
                 Store.luckysheet_sheet_move_status = true;
@@ -565,10 +566,14 @@ export function initialSheetBar(){
         }
 
         let $t = $("#luckysheet-sheet-list");
-
+        const box = e.target.getBoundingClientRect();
         let left = $(this).offset().left - $('#' + Store.container).offset().left;
-        let bottom = $(this).height() + $('#luckysheet-sta-content').height() + 12;
-        $t.css({left: left + 'px', bottom: bottom + 'px'}).show();
+
+        // let bottom = $(this).height() + $('#luckysheet-sta-content').height() + 12;
+        // $t.css({left: left + 'px', bottom: bottom + 'px'}).show();
+
+        let bottom = box.y - box.height
+        $t.css({left: left + 'px', top: bottom + 'px'}).show();
         $("#luckysheet-input-box").removeAttr("style");
     });
 

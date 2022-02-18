@@ -102,7 +102,33 @@ export default function luckysheetHandler() {
         }
     }());
 
+    $("#luckysheet-sheet-container-c").mousewheel(function (event, delta) {
+        let scrollNum = event.deltaFactor<40?1:(event.deltaFactor<80?2:3);
+        let scrollLeft = $(this).scrollLeft();
+        if(event.deltaY != 0){
+            if(event.deltaY <0){
+                scrollLeft = scrollLeft + 10*scrollNum;
 
+            }
+            else{
+                scrollLeft = scrollLeft - 10*scrollNum;
+
+            }
+        }
+        else if(event.deltaX != 0){
+
+            if(event.deltaX >0){
+                scrollLeft = scrollLeft + 10*scrollNum;
+
+            }
+            else{
+                scrollLeft = scrollLeft - 10*scrollNum;
+
+            }
+        }
+        $(this).scrollLeft(scrollLeft);
+        event.preventDefault();
+    });
 
     //滚动监听
     $("#luckysheet-cell-main").scroll(function () {

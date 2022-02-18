@@ -70,7 +70,7 @@
 		$(function () {
 
 			// According to the browser language
-			var lang = luckysheetDemoUtil.language() === 'zh' ? 'zh' : 'en';
+			var lang = luckysheetDemoUtil.language() === 'zh' ? 'zh_sys' : 'en';
 			var isShare = luckysheetDemoUtil.getRequest().share; // '?share=1' opens the collaborative editing mode
 			var gridKey = luckysheetDemoUtil.getRequest().gridKey; // workbook id for collaborative editing, or directly define here
             var options = null;
@@ -1905,8 +1905,16 @@
 					}
 				}]
 			}
-      // options.showsheetbarConfig = {container: '.tab-box'}
-      debugger
+      options.showsheetbarConfig = {container: '.tab-box'}
+      options.sheetRightClickConfig = {
+        delete: true, // 删除
+        copy: false, // 复制
+        rename: false, //重命名
+        color: false, //更改颜色
+        hide: false, //隐藏，取消隐藏
+        move: false, //向左移，向右移
+      }
+      options.showstatisticBar = false;
 			luckysheet.create(options);
     })
 	</script>

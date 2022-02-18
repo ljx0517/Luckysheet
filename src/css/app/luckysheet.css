@@ -14,4 +14,22 @@
   right: unset!important;
   bottom: unset!important;
   left: unset!important;
+  height: 100%!important;
+}
+.luckysheet-sheet-area div.luckysheet-sheets-item-active{
+  height: 100%!important;
+}
+#luckysheet-sheet-content, .luckysheet-sheet-container,
+.luckysheet-sheet-area div.luckysheet-sheet-container div.luckysheet-sheet-container-c,
+.luckysheet-sheet-area div.luckysheet-sheets-item{
+  height: 100%!important;
+  border-bottom: none!important;
+}
+.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-name{
+  /*vertical-align: text-top;*/
+  line-height: 40px;
+}
+.luckysheet-sheet-area div.luckysheet-sheets-item .luckysheet-sheets-item-menu{
+  top:0px!important;
+  line-height: 40px;
 }
