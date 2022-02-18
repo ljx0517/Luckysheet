@@ -2,7 +2,7 @@ import Store from '../store';
 
 function luckysheetRangeLast(obj) {
     let range;
-    
+
     if(document.createRange){ //chrome, firefox, opera, safari, ie9+
         if(obj.innerHTML != obj.innerText || obj.innerHTML == ""){
             obj.focus(); //解决ff不获取焦点无法定位问题
@@ -20,7 +20,7 @@ function luckysheetRangeLast(obj) {
 
             let selection = window.getSelection();
             selection.removeAllRanges();
-            selection.addRange(range);    
+            selection.addRange(range);
         }
     }
     else if(document.selection){ //ie8 and lower
@@ -33,7 +33,7 @@ function luckysheetRangeLast(obj) {
 
 function getCursortPosition(textDom){
     let cursorPos = 0;
-    
+
     if(document.selection){
         textDom.focus();
         let selectRange = document.selection.createRange();
@@ -80,7 +80,7 @@ function selectTextDom(ele){
         let range = document.body.createTextRange();
         range.moveToElementText(ele);
         range.select();
-    } 
+    }
 }
 
 function selectTextContent(ele){
@@ -98,7 +98,7 @@ function selectTextContent(ele){
         let range = document.body.createTextRange();
         range.moveToElementText(ele);
         range.select();
-    } 
+    }
 }
 
 function selectTextContentCross(sEle, eEle){

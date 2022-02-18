@@ -145,7 +145,7 @@ let luckysheetsheetrightclick = function ($t, $cur, e) {
         $("#luckysheet-input-box").removeAttr("style");
         $("#luckysheet-formula-functionrange .luckysheet-formula-functionrange-highlight").remove();
     }
-
+    debugger
     $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
     $t.addClass("luckysheet-sheets-item-active");
     cleargridelement(e);
@@ -181,7 +181,7 @@ export function initialSheetBar(){
                 return;
             }, 0);
         }
-
+        debugger
         if ($item.hasClass("luckysheet-sheets-item-active") && $item.find(".luckysheet-sheets-item-name").attr("contenteditable") == "false") {
             jfdbclicklagTimeout = setTimeout(function () {
                 Store.luckysheet_sheet_move_status = true;
@@ -209,7 +209,7 @@ export function initialSheetBar(){
             }, 200);
         }
     }).on("click", "div.luckysheet-sheets-item", function (e) {
-
+        debugger
         if(isEditMode()){
             // alert("非编辑模式下不允许该操作！");
             return;
@@ -323,7 +323,7 @@ export function initialSheetBar(){
         // 钩子： sheetEditNameAfter
         method.createHookFunction('sheetEditNameAfter', {
             i: Store.luckysheetfile[index].index,
-            oldName: oldtxt, newName: txt 
+            oldName: oldtxt, newName: txt
         });
     });
 

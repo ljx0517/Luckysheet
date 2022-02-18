@@ -1,0 +1,17 @@
+.luckysheet{
+  border: none!important;
+}
+#luckysheet-sheet-area-container{
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.luckysheet-sheet-area{
+  padding: 0!important;
+  position: relative!important;
+  right: unset!important;
+  bottom: unset!important;
+  left: unset!important;
+}

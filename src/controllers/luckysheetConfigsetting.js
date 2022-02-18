@@ -39,6 +39,10 @@ const luckysheetConfigsetting = {
 
     defaultTextColor: '#000',
     defaultCellColor: '#fff',
+
+
+    // internal cfg
+    useCustomSheetBarContainer: false
 }
 
 export default luckysheetConfigsetting;

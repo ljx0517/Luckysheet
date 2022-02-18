@@ -4901,7 +4901,7 @@ export function setSheetAdd(options = {}) {
             sheetname = sheetObject.name;
         }
     }
-
+    debugger
     $("#luckysheet-sheet-container-c").append(replaceHtml(sheetHTML, {
         "index": index,
         "active": "",
@@ -4954,7 +4954,7 @@ export function setSheetAdd(options = {}) {
         arr[i].order = i;
         orders[item.index.toString()] = i;
     })
-
+    debugger
     $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
     $("#luckysheet-sheets-item" + index).addClass("luckysheet-sheets-item-active");
     $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + index + '" class="luckysheet-datavisual-selection-set"></div>');
@@ -5060,7 +5060,7 @@ export function setSheetCopy(options = {}) {
     if(isRealNum(targetOrder)){
         afterObj = $("#luckysheet-sheets-item" + Store.luckysheetfile[targetOrder - 1].index);
     }
-
+    debugger
     $("#luckysheet-sheet-container-c").append(replaceHtml(sheetHTML, {
         "index": copyjson.index,
         "active": "",
@@ -5071,7 +5071,7 @@ export function setSheetCopy(options = {}) {
     }));
     $("#luckysheet-sheets-item" + copyjson.index).insertAfter(afterObj);
     Store.luckysheetfile.splice(targetOrder, 0, copyjson);
-
+    debugger
     $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
     $("#luckysheet-sheets-item" + index).addClass("luckysheet-sheets-item-active");
     $("#luckysheet-cell-main").append('<div id="luckysheet-datavisual-selection-set-' + index + '" class="luckysheet-datavisual-selection-set"></div>');
@@ -5185,7 +5185,7 @@ export function setSheetActive(order, options = {}) {
     let {
         success
     } = {...options}
-
+    debugger
     $("#luckysheet-sheet-area div.luckysheet-sheets-item").removeClass("luckysheet-sheets-item-active");
     $("#luckysheet-sheets-item" + file.index).addClass("luckysheet-sheets-item-active");
 

@@ -7,6 +7,7 @@ import sheetmanage from './sheetmanage';
 import tooltip from '../global/tooltip'
 import { $$, getObjType, camel2split } from "../utils/util";
 import { defaultToolbar, toolbarIdMap } from './toolbar';
+import { sheetAreaHTML } from './constant';
 
 let gridW = 0,
     gridH = 0;
@@ -32,14 +33,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
         Store.toolbarHeight = document.querySelector('#' + Store.container +' .luckysheet-wa-editor').offsetHeight;
     }
 
-    // if (!luckysheetConfigsetting.showsheetbar) {
-    //     $("#" + Store.container).find("#luckysheet-sheet-area").hide();
-    //     Store.sheetBarHeight = 0;
-    // }
-    // else {
-    //     $("#" + Store.container).find("#luckysheet-sheet-area").show();
-    //     Store.sheetBarHeight = 31;
-    // }
+
 
 
     customSheetbarConfig();
@@ -477,30 +471,6 @@ export function menuToolBarWidth() {
  */
 function customSheetbarConfig() {
 
-    if(!luckysheetConfigsetting.initShowsheetbarConfig){
-
-        luckysheetConfigsetting.initShowsheetbarConfig = true;
-
-        const config = {
-            add: true, //Add worksheet
-            menu: true, //Worksheet management menu
-            sheet: true //Worksheet display
-        }
-
-        if(!luckysheetConfigsetting.showsheetbar){
-            for(let s in config){
-                config[s] = false;
-            }
-        }
-
-        // showsheetbarConfig determines the final result
-        if(JSON.stringify(luckysheetConfigsetting.showsheetbarConfig) !== '{}'){
-            Object.assign(config,luckysheetConfigsetting.showsheetbarConfig);
-        }
-
-        luckysheetConfigsetting.showsheetbarConfig = config;
-
-    }
 
     const config = luckysheetConfigsetting.showsheetbarConfig;
 
@@ -532,13 +502,18 @@ function customSheetbarConfig() {
         }
     }
 
+    let container = "#" + Store.container;
+    // if (Store.showsheetbarConfig.container) {
+    //     container = Store.showsheetbarConfig.container
+    // }
+    container = config.container;
     if (isHide === 3) {
-        $("#" + Store.container).find("#luckysheet-sheet-area").hide();
-        Store.sheetBarHeight = 0;
+        $(container).find("#luckysheet-sheet-area").hide();
+        // Store.sheetBarHeight = 0;
     }
     else {
-        $("#" + Store.container).find("#luckysheet-sheet-area").show();
-        Store.sheetBarHeight = 31;
+        $(container).find("#luckysheet-sheet-area").show();
+        // Store.sheetBarHeight = 31;
     }
 }
 

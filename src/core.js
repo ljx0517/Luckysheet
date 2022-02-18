@@ -68,6 +68,7 @@ luckysheet.create = function (setting) {
         menu = extendsetting.menu,
         title = extendsetting.title;
 
+
     let container = extendsetting.container;
     Store.container = container;
     Store.luckysheetfile = extendsetting.data;
@@ -99,6 +100,14 @@ luckysheet.create = function (setting) {
     luckysheetConfigsetting.showinfobar = extendsetting.showinfobar;
     luckysheetConfigsetting.showsheetbar = extendsetting.showsheetbar;
     luckysheetConfigsetting.showsheetbarConfig = extendsetting.showsheetbarConfig;
+
+
+    if (extendsetting.showsheetbarConfig
+      && extendsetting.showsheetbarConfig.container !== defaultSetting.showsheetbarConfig.container) {
+        luckysheetConfigsetting.useCustomSheetBarContainer = true;
+    }
+
+
     luckysheetConfigsetting.showstatisticBar = extendsetting.showstatisticBar;
     luckysheetConfigsetting.showstatisticBarConfig = extendsetting.showstatisticBarConfig;
     luckysheetConfigsetting.sheetFormulaBar = extendsetting.sheetFormulaBar;

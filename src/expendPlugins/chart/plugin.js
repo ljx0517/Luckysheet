@@ -9,7 +9,7 @@ import { rowLocation, colLocation, mouseposition } from '../../global/location'
 import { setluckysheet_scroll_status } from '../../methods/set'
 import {
     luckysheetMoveHighlightCell,
-    luckysheetMoveHighlightCell2, 
+    luckysheetMoveHighlightCell2,
     luckysheetMoveHighlightRange,
     luckysheetMoveHighlightRange2,
     luckysheetMoveEndCell
@@ -165,8 +165,9 @@ function renderCharts(chartLists, isDemo) {
             }
             e.stopPropagation()
         })
-        $t.mousedown(function (e) {  // move chart
 
+        $t.mousedown(function (e) {  // move chart
+            debugger
                 if (!chartInfo.chartparam.luckysheetCurrentChartMaxState) {
                     //当前图表显示区域高亮
                     showNeedRangeShow(chart_id);
