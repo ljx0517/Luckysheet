@@ -1,7 +1,7 @@
 
 import sheetmanage from './sheetmanage';
 import server from './server';
-import { sheetselectlistitemHTML, sheetselectlistHTML, keycode } from './constant';
+import { sheetselectlistitemHTML, sheetselectlistHTML, keycode, sheetAreaHTML } from './constant';
 import {
     replaceHtml,
     mouseclickposition,
@@ -124,6 +124,7 @@ function showsheetconfigmenu() {
 }
 
 let luckysheetsheetrightclick = function ($t, $cur, e) {
+    debugger
     clearTimeout(jfdbclicklagTimeout);
     if ($cur.hasClass("luckysheet-sheets-item-name") && $cur.attr("contenteditable") == "true") {
         return;
@@ -164,6 +165,45 @@ export function initialSheetBar(){
     const _locale = locale();
     const locale_sheetconfig = _locale.sheetconfig;
     isInitialSheetConfig = false
+    debugger
+
+
+    if(!luckysheetConfigsetting.initShowsheetbarConfig){
+
+        luckysheetConfigsetting.initShowsheetbarConfig = true;
+
+        const config = {
+            add: true, //Add worksheet
+            menu: true, //Worksheet management menu
+            sheet: true //Worksheet display
+        }
+
+        if(!luckysheetConfigsetting.showsheetbar){
+            for(let s in config){
+                config[s] = false;
+            }
+        }
+        // showsheetbarConfig determines the final result
+        if(JSON.stringify(luckysheetConfigsetting.showsheetbarConfig) !== '{}'){
+            Object.assign(config,luckysheetConfigsetting.showsheetbarConfig);
+        }
+
+        Store.sheetBarHeight = 31;
+        if (luckysheetConfigsetting.useCustomSheetBarContainer) {
+            Store.sheetBarHeight = 0;
+        }
+
+        luckysheetConfigsetting.showsheetbarConfig = config;
+
+        let sheetAreaContainer = config.container;
+        document.querySelector(sheetAreaContainer).innerHTML = sheetAreaHTML()
+
+    }
+
+
+
+
+
 
     $("#luckysheet-sheet-area").on("mousedown", "div.luckysheet-sheets-item", function (e) {
         if(isEditMode()){

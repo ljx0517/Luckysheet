@@ -435,67 +435,9 @@ const sheetmanage = {
             $("#luckysheet-cell-main").append('<div ' + display + ' id="luckysheet-datavisual-selection-set-' + sheetIndex + '" class="luckysheet-datavisual-selection-set"></div>');
         }
 
-        if(!luckysheetConfigsetting.initShowsheetbarConfig){
-
-            luckysheetConfigsetting.initShowsheetbarConfig = true;
-
-            const config = {
-                add: true, //Add worksheet
-                menu: true, //Worksheet management menu
-                sheet: true //Worksheet display
-            }
-
-            if(!luckysheetConfigsetting.showsheetbar){
-                for(let s in config){
-                    config[s] = false;
-                }
-            }
-            // showsheetbarConfig determines the final result
-            if(JSON.stringify(luckysheetConfigsetting.showsheetbarConfig) !== '{}'){
-                Object.assign(config,luckysheetConfigsetting.showsheetbarConfig);
-            }
-
-            Store.sheetBarHeight = 31;
-            if (luckysheetConfigsetting.useCustomSheetBarContainer) {
-                Store.sheetBarHeight = 0;
-            }
-
-            luckysheetConfigsetting.showsheetbarConfig = config;
-
-            let sheetAreaContainer = config.container;
-            document.querySelector(sheetAreaContainer).innerHTML = sheetAreaHTML()
-
-        }
 
         $("#luckysheet-sheet-container-c").append(btn.join(""));
 
-        $("#luckysheet-sheet-container-c").mousewheel(function (event, delta) {
-            let scrollNum = event.deltaFactor<40?1:(event.deltaFactor<80?2:3);
-            let scrollLeft = $(this).scrollLeft();
-            if(event.deltaY != 0){
-                if(event.deltaY <0){
-                    scrollLeft = scrollLeft + 10*scrollNum;
-
-                }
-                else{
-                    scrollLeft = scrollLeft - 10*scrollNum;
-
-                }
-            }
-            else if(event.deltaX != 0){
-
-                if(event.deltaX >0){
-                    scrollLeft = scrollLeft + 10*scrollNum;
-
-                }
-                else{
-                    scrollLeft = scrollLeft - 10*scrollNum;
-
-                }
-            }
-            $(this).scrollLeft(scrollLeft);
-            event.preventDefault();
-        });
 
         _this.locationSheet();
     },
@@ -907,7 +849,7 @@ const sheetmanage = {
 
             let ini = function(){
                 file["load"] = "1";
-
+                debugger
                 _this.createSheet();
 
                 let execF = function(){
